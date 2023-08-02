@@ -44,7 +44,10 @@ router.get('/',(req,res,next)=>{
     res.send(htmlCode);
 })
 router.post('/',(req,res,next)=>{
-    
+    const username = req.body['username'];
+    const message = req.body['message'];
+    const display =`${username}: ${message} \n`;
+    console.log(display)
     res.redirect('/user');
 })
 
