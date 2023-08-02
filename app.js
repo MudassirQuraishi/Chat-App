@@ -7,7 +7,7 @@ const userRouter = require('./routes/user');
 
 const app = express();
 
-
+//middleware
 app.use('/login', landingPageRouter);
 app.use('/user', userRouter);
 

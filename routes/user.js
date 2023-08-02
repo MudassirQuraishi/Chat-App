@@ -4,7 +4,7 @@ const fs= require('fs');
 
 const router = express.Router();
 
-router.use(bodyParser.urlencoded({ extended: true }))
+router.use(bodyParser.urlencoded({ extended: true }));
 
 const htmlCode = `<!DOCTYPE html>
 <html lang="en">
@@ -44,7 +44,7 @@ router.get('/',(req,res,next)=>{
     const message = messages.map((messages) => `<li>${messages}</li>`).join('');
     const updatedCode = htmlCode.replace(`<!-- Server-side rendering will add the li elements here -->`,message)
 
-    res.send(htmlCode);
+    res.send(updatedCode);
 })
 router.post('/',(req,res,next)=>{
 

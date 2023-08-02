@@ -37,8 +37,7 @@ router.get('/',(req,res,next)=>{
     res.send(code);
 })
 router.post('/',(req,res,next)=>{
-    console.log(req.body);
-    res.redirect('/user')
+    res.redirect('/user');
 })
 
 module.exports= router;
