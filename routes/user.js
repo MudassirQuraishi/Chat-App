@@ -32,7 +32,6 @@ const htmlCode = `<!DOCTYPE html>
         const messages = document.getElementById('messages');
         window.addEventListener('DOMContentLoaded',()=>{
             username.value = localStorage.getItem('username');
-            console.log(username.value);
         })
     </script>
 </body>
@@ -40,6 +39,10 @@ const htmlCode = `<!DOCTYPE html>
 
 router.get('/',(req,res,next)=>{
 
+    const messagesContent = fs.readFileSync('messages.txt', 'utf8');
+    const messages = messagesContent.split('\n');
+    const message = messages.map((messages) => `<li>${messages}</li>`).join('');
+    const updatedCode = htmlCode.replace(`<!-- Server-side rendering will add the li elements here -->`,message)
 
     res.send(htmlCode);
 })
@@ -55,7 +58,7 @@ router.post('/',(req,res,next)=>{
         console.error('Error appending product:', err);
         return res.status(500).send('Error saving messages');
     }
-    
+
     res.redirect('/user');
 })
 
